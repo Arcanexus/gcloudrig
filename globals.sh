@@ -830,7 +830,7 @@ function gcloudrig_mount_games_disk {
     gcloud compute disks create "$GAMESDISK" \
       --zone "$ZONE" \
       --quiet \
-      --type "pd-balanced" \
+      --type "pd-ssd" \
       --labels "$GCRLABEL=true"
 
   # or restore it from the latest snapshot
@@ -839,7 +839,7 @@ function gcloudrig_mount_games_disk {
       --zone "$ZONE" \
       --source-snapshot "$snapshot" \
       --quiet \
-      --type "pd-balanced" \
+      --type "pd-ssd" \
       --labels "$GCRLABEL=true"
   fi
 
