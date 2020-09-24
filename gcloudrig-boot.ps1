@@ -31,13 +31,13 @@ function Mount-GamesDisk {
       $Snapshot=(Get-GceSnapshot -Name "$LatestSnapshotName")
       If ($Snapshot) {
         Write-Status "Restoring games disk from snapshot $LatestSnapshotName..."
-        $GamesDisk=(New-GceDisk -DiskName "$GamesDiskName" -Snapshot $Snapshot -Zone "$ZoneName")
+        $GamesDisk=(New-GceDisk -DiskName "$GamesDiskName" -Snapshot $Snapshot -Zone "$ZoneName" -DiskType "pd-balanced")
       } Else {
         Write-Status -Sev ERROR "Failed to get snapshot $LatestSnapshotName"
       }
     } Else {
       Write-Status "Creating blank games disk..."
-      $GamesDisk=(New-GceDisk -DiskName "$GamesDiskName" -Zone "$ZoneName")
+      $GamesDisk=(New-GceDisk -DiskName "$GamesDiskName" -Zone "$ZoneName" -DiskType "pd-balanced")
       $GamesDiskNeedsInit=$true
     }
   }

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # what gpu and how many? see https://cloud.google.com/compute/docs/gpus
-ACCELERATORTYPE="nvidia-tesla-p4-vws"
+ACCELERATORTYPE="nvidia-tesla-p100-vws"
 ACCELERATORCOUNT="1"
 
 # instance and boot disk type?
@@ -830,6 +830,7 @@ function gcloudrig_mount_games_disk {
     gcloud compute disks create "$GAMESDISK" \
       --zone "$ZONE" \
       --quiet \
+      --type "pd-balanced" \
       --labels "$GCRLABEL=true"
 
   # or restore it from the latest snapshot
@@ -838,6 +839,7 @@ function gcloudrig_mount_games_disk {
       --zone "$ZONE" \
       --source-snapshot "$snapshot" \
       --quiet \
+      --type "pd-balanced" \
       --labels "$GCRLABEL=true"
   fi
 
