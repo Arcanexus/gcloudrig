@@ -489,8 +489,8 @@ Function Install-VirtualSoundCard {
 
 Function Disable-AutomaticWindowsUpdate {
   Write-Status "Disabling automatic Windows Update"
-  Set-ItemProperty "HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\WindowsUpdate\AU" "NoAutoUpdate" 1
-  Set-ItemProperty "HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\WindowsUpdate\AU" "AUOptions" 2
+  #Set-ItemProperty "HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\WindowsUpdate\AU" "NoAutoUpdate" 1
+  #Set-ItemProperty "HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\WindowsUpdate\AU" "AUOptions" 2
 }
 
 Function Invoke-WindowsUpdate {
@@ -840,7 +840,7 @@ Function Set-Autologon {
 
 Function Disable-UserAccessControl {
   Write-Status -Sev DEBUG "Disabling UAC"
-  New-ItemProperty -Path "HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system" -Name EnableLUA -PropertyType DWord -Value 0 -Force
+  #New-ItemProperty -Path "HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system" -Name EnableLUA -PropertyType DWord -Value 0 -Force
 }
 
 Function Invoke-GcloudrigInstaller {
